@@ -21,5 +21,13 @@ describe("FSB Assessment", function () {
     // get what is in search and check the search term is included
     title = await browser.getTitle();
     expect(browser).toHaveTextContaining("Test+Automation+Learning");
+
+    // step 3 - find a link including udemy and click it
+    const udemy = $("a*=Udemy");
+    await udemy.click();
+    title = await browser.getTitle();
+    expect(browser).toHaveTextContaining("udemy");
+
+    //
   });
 });
