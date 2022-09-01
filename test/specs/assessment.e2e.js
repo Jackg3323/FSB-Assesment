@@ -22,17 +22,24 @@ describe("FSB Assessment", function () {
     expect(browser).toHaveTextContaining("Test+Automation+Learning");
 
     // step 3 and 4 - find a link including Udemy and click it
+    // Timer is to stop test from running to quickly and let the page finish loading
+    await browser.pause(1000);
     const udemy = $("a*=Udemy");
     await udemy.click();
     expect(browser).toHaveTextContaining("udemy");
 
     // step 5 - search Udemy for BDD with Cucumber
+    // timer to allow page to lode
     await browser.pause(1000);
     const uSearch = $("input[name='q']");
     await uSearch.setValue("BDD with Cucumber");
+    // timer to allow text to be typed
     await browser.pause(1000);
     await browser.keys("\uE007");
+    // timer to allow to page to load
     await browser.pause(1000);
     expect(browser).toHaveTextContaining("BDD");
+
+    // time
   });
 });
