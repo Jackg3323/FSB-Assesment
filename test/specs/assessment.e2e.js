@@ -22,7 +22,7 @@ describe("FSB Assessment", function () {
     title = await browser.getTitle();
     expect(browser).toHaveTextContaining("Test+Automation+Learning");
 
-    // step 3 - find a link including udemy and click it
+    // step 3 and 4 - find a link including udemy and click it
     const udemy = $("a*=Udemy");
     await udemy.click();
     title = await browser.getTitle();
