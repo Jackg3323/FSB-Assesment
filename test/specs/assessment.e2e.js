@@ -40,6 +40,12 @@ describe("FSB Assessment", function () {
     await browser.pause(1000);
     expect(browser).toHaveTextContaining("BDD");
 
-    // time
+    // Step 6 - Filter courses by highest rating and select the top
+    const uFilter = $("input[name='sort']");
+    await uFilter.click();
+    await uFilter.selectByVisibleText("highest rated");
+    const uResult = 'div[id="u125-popper-trigger--586"]';
+    await uResult.click();
+    // assert that the page loaded was the one clicked
   });
 });
