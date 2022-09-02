@@ -1,4 +1,5 @@
 import Google from "../pageobjects/google.page";
+import Udemy from "../pageobjects/udemy.page";
 
 describe("FSB Assessment", function () {
   it("Placeholder", async function () {
@@ -9,7 +10,7 @@ describe("FSB Assessment", function () {
     await Google.rejectCookie.click();
 
     // get what is in title
-    let title = await browser.getTitle();
+    const title = await browser.getTitle();
 
     // check it includes the text google
     expect(title).toEqual("Google");
@@ -19,7 +20,7 @@ describe("FSB Assessment", function () {
     let searchTerm = "Test Automation Learning";
     await Google.search(searchTerm);
     // get what is in search url and check the search term is included
-    expect(browser).toHaveURLContaining("Test+Automation+Learning");
+    expect(browser).toHaveUrlContaining("Test+Automation+Learning");
 
     // step 3 and 4 - find a link including Udemy and click it
     // Timer is to stop test from running to quickly and let the page finish loading
@@ -29,31 +30,28 @@ describe("FSB Assessment", function () {
     // pass the variable into the method
     await Google.clickResult(desiredSite);
     // Step 4 - check the URL to check it contains "Udemy"
-    expect(browser).toHaveURLContaining("udemy");
+    expect(browser).toHaveUrlContaining("udemy");
 
-  //   // step 5 - search Udemy for BDD with Cucumber
-  //   // timer to allow page to lode
-  //   await browser.pause(1000);
-  //   const udemySearch = $("input[name='q']");
-  //   await udemySearch.setValue("BDD with Cucumber");
-  //   // timer to allow text to be typed
-  //   await browser.pause(1000);
-  //   await browser.keys("\uE007");
-  //   // timer to allow to page to load
-  //   await browser.pause(1000);
-  //   expect(browser).toHaveTextContaining("BDD");
+    // step 5 - search Udemy for BDD with Cucumber
+    // timer to allow page to lode
+    await browser.pause(1000);
+    searchTerm = "BDD with Cucumber";
+    Udemy.search(searchTerm);
+    // timer to allow to page to load
+    await browser.pause(1000);
+    expect(browser).toHaveTextContaining(searchTerm);
 
-  //   // Step 6 - Filter courses by highest rating and select the top
-  //   // find the filter box that lets the user sort by ratings
-  //   const udemyFilter = $("select[name='sort']");
-  //   await udemyFilter.click();
-  //   await udemyFilter.selectByVisibleText("Highest Rated");
-  //   const udemyResult = await $("a*=BDD");
-  //   await udemyResult.click();
-  //   // assert that the page loaded was the one clicked
-  //   title = await browser.getTitle();
-  //   expect(title).toContain("BDD");
-  // });
+    //   // Step 6 - Filter courses by highest rating and select the top
+    //   // find the filter box that lets the user sort by ratings
+    //   const udemyFilter = $("select[name='sort']");
+    //   await udemyFilter.click();
+    //   await udemyFilter.selectByVisibleText("Highest Rated");
+    //   const udemyResult = await $("a*=BDD");
+    //   await udemyResult.click();
+    //   // assert that the page loaded was the one clicked
+    //   title = await browser.getTitle();
+    //   expect(title).toContain("BDD");
+  });
 
   // it("Step 6 - Filter courses by highest rating and select the top result", async function () {
   //   // Due to issues with a CAPCHA on the udemy site step 6 will be treated as a separate test
