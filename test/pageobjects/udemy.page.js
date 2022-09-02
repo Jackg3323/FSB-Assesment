@@ -14,6 +14,12 @@ class Udemy extends Page {
       "https://www.udemy.com/courses/search/?src=ukw&q=BDD+with+Cucumber"
     );
   }
+
+  openFilteredUdemySearch() {
+    return browser.url(
+      "https://www.udemy.com/courses/search/?q=BDD+with+Cucumber&sort=highest-rated&src=ukw"
+    );
+  }
 }
 
 export default new Udemy();
