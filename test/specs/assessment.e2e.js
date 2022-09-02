@@ -36,7 +36,7 @@ describe("FSB Assessment", function () {
 
   it("Searches Udemy for BDD with Cucumber", async function () {
     // step 5 - search Udemy for BDD with Cucumber
-    // timer to allow page to lode
+    // timer to allow page to load
     await browser.pause(1000);
     const udemySearch = $("input[name='q']");
     await udemySearch.setValue("BDD with Cucumber");
