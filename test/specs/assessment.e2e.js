@@ -55,7 +55,7 @@ describe("FSB Assessment", function () {
 
   it("Step 6 - Filter courses by highest rating and select the top result", async function () {
     // Due to issues with a CAPCHA on the udemy site step 6 will be treated as a separate test
-    browser.url(
+    browser.newWindow(
       "https://www.udemy.com/courses/search/?src=ukw&q=BDD+with+Cucumber"
     );
     const udemyFilter = $("select[name='sort']");
@@ -67,7 +67,7 @@ describe("FSB Assessment", function () {
 
   it("Step 6 - Filter courses by highest rating using the URL and select the top result", async function () {
     // As an attempt to just access a course this test will just manually start at the filtered results and select a result with "BDD" in the link
-    browser.url(
+    browser.newWindow(
       "https://www.udemy.com/courses/search/?q=BDD+with+Cucumber&sort=highest-rated&src=ukw"
     );
     // this time increases the likely hood the courses load and the site not crash
