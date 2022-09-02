@@ -32,8 +32,8 @@ describe("FSB Assessment", function () {
     // step 5 - search Udemy for BDD with Cucumber
     // timer to allow page to lode
     await browser.pause(1000);
-    const uSearch = $("input[name='q']");
-    await uSearch.setValue("BDD with Cucumber");
+    const udemySearch = $("input[name='q']");
+    await udemySearch.setValue("BDD with Cucumber");
     // timer to allow text to be typed
     await browser.pause(1000);
     await browser.keys("\uE007");
@@ -42,11 +42,12 @@ describe("FSB Assessment", function () {
     expect(browser).toHaveTextContaining("BDD");
 
     // Step 6 - Filter courses by highest rating and select the top
-    const uFilter = $("input[name='sort']");
-    await uFilter.click();
-    await uFilter.selectByVisibleText("Highest Rated");
-    const uResult = await $('div[id="u125-popper-trigger--586"]');
-    await uResult.click();
+    // find the filter box that lets the user sort by ratings
+    const udemyFilter = $("select[name='sort']");
+    await udemyFilter.click();
+    await udemyFilter.selectByVisibleText("Highest Rated");
+    const udemyResult = await $("a*=BDD");
+    await udemyResult.click();
     // assert that the page loaded was the one clicked
     title = await browser.getTitle();
     expect(title).toContain("BDD");
@@ -57,9 +58,9 @@ describe("FSB Assessment", function () {
     browser.url(
       "https://www.udemy.com/courses/search/?src=ukw&q=BDD+with+Cucumber"
     );
-    const uFilter = $("select[name='sort']");
-    await uFilter.click();
-    await uFilter.selectByVisibleText("Highest Rated");
+    const udemyFilter = $("select[name='sort']");
+    await udemyFilter.click();
+    await udemyFilter.selectByVisibleText("Highest Rated");
     // during a manual test this was found to be the course that is currently highest rated but a captcha will stop the page loading HOWEVER the course title is still in the URL and can confirm the correct course is loaded
     expect(browser).toHaveUrlContaining("highest-rated");
   });
@@ -72,9 +73,9 @@ describe("FSB Assessment", function () {
     // this time increases the likely hood the courses load and the site not crash
     await browser.pause(10000);
     // this selects the first link with BDD in the title
-    const uResult = await $("a*=BDD");
+    const udemyResult = await $("a*=BDD");
     // click the link
-    await uResult.click();
+    await udemyResult.click();
     await browser.pause(10000);
     // during a manual test this was found to be the course that is currently highest rated but a captcha will stop the page loading HOWEVER the course title is still in the URL and can confirm the correct course is loaded
     expect(browser).toHaveUrlContaining(
