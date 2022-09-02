@@ -11,7 +11,7 @@ This is my attempt at the technical assessment provided by FSB. The scenario was
 > 6. Click on the course with highest rating from the list of search results
 
 The task provided was to create an automated test for the above scenario using either Selenium Webdriver or WebdriverIO.
-I have elected to use WebdriverIO as this is the frame that I felt more comfortable with. I have heavily commented the code to show what that line or section of code is intended to do or my thoughts/ reasoning on why have elected to write it that way.
+I have elected to use WebdriverIO as this is the framework that I felt more comfortable with. I have heavily commented the code to show what that line or section of code is intended to do or my thoughts/ reasoning on why have elected to write it that way.
 
 # Branches
 
