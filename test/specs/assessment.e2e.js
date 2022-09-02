@@ -1,5 +1,5 @@
 describe("FSB Assessment", function () {
-  it("Placeholder", async function () {
+  it("opens google and rejects cookies", async function () {
     // Step 1 - open google
     // This test does not need a page object and therefore directly enters the URL rather than pull from a page object file
     browser.url("https://www.google.com/");
@@ -9,11 +9,13 @@ describe("FSB Assessment", function () {
     await cookie.click();
 
     // get what is in title
-    let title = await browser.getTitle();
+    const title = await browser.getTitle();
 
     // check it includes the text google
     expect(title).toEqual("Google");
+  });
 
+  it("Searches Google for Test Automation Learning", async function () {
     // Step 2 - find the input box, enter the search term and press enter to run search
     const gInput = $("input[name='q']");
     await gInput.setValue("Test Automation Learning");
@@ -21,14 +23,18 @@ describe("FSB Assessment", function () {
 
     // get what is in search url and check the search term is included
     expect(browser).toHaveTextContaining("Test+Automation+Learning");
+  });
 
+  it("Selects the Udemy Link", async function () {
     // step 3 and 4 - find a link including Udemy and click it
     // Timer is to stop test from running to quickly and let the page finish loading
     await browser.pause(1000);
     const udemy = $("a*=Udemy");
     await udemy.click();
     expect(browser).toHaveTextContaining("udemy");
+  });
 
+  it("Searches Udemy for BDD with Cucumber", async function () {
     // step 5 - search Udemy for BDD with Cucumber
     // timer to allow page to lode
     await browser.pause(1000);
@@ -40,7 +46,9 @@ describe("FSB Assessment", function () {
     // timer to allow to page to load
     await browser.pause(1000);
     expect(browser).toHaveTextContaining("BDD");
+  });
 
+  it("Filters Results and selects highest rated course", async function () {
     // Step 6 - Filter courses by highest rating and select the top
     // find the filter box that lets the user sort by ratings
     const udemyFilter = $("select[name='sort']");
@@ -49,7 +57,7 @@ describe("FSB Assessment", function () {
     const udemyResult = await $("a*=BDD");
     await udemyResult.click();
     // assert that the page loaded was the one clicked
-    title = await browser.getTitle();
+    const title = await browser.getTitle();
     expect(title).toContain("BDD");
   });
 
