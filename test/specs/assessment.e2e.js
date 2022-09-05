@@ -1,6 +1,7 @@
 import Google from "../pageobjects/google.page";
 import Udemy from "../pageobjects/udemy.page";
 
+// TODO: Refactor to use waitFor instead of pause
 describe("FSB Assessment", function () {
   it("It loads google and rejects cookies", async function () {
     // Step 1 - Go to google site
