@@ -23,6 +23,6 @@ As you are aware there is an issue with Udemy site providing blockers in the for
 
 It is also worth noting that the tests of steps 5 and 6 can fail due to the site refusing to load as seen in the below images.
 
-![Error 1](/images/Udemy%20Issue%201.jpg)
-![Error 2](/images/Udemy%20Issue%202.jpg)
-![Error 3](/images/Udemy%20Issue%203.jpg)
+![Error 1](/Images/Udemy%20Issue%201.jpg)
+![Error 2](/Images/Udemy%20Issue%202.jpg)
+![Error 3](/Images/Udemy%20Issue%203.jpg)
